@@ -1,20 +1,27 @@
 import * as THREE from 'three';
 import GUI from 'lil-gui';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-import { scene } from './core/scene.js';
-import { camera } from './core/camera.js';
-import { renderer } from './core/renderer.js';
-import { addLights } from './core/lighting.js';
-import { addFloor } from './objects/floor.js';
-import { addFlowerPot } from './objects/flower-pot.js';
+import { scene } from './core/scene';
+import { camera } from './core/camera';
+import { renderer } from './core/renderer';
+import { addLights } from './core/lights';
+import { addFloor } from './objects/floor';
+import { addFlowerPot } from './objects/flower-pot';
+import { addDoor } from './objects/door';
 
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { addDoor } from './objects/door.js';
+import { addWall } from './objects/wall';
+
+import { wallConfigs } from '@/utils/constants';
 
 function init() {
     const gui = new GUI()
     addLights(scene, gui);
-    addFloor(scene, gui);
+    addFloor(scene);
+    addWall(scene, gui, wallConfigs[1]);
+    addWall(scene, gui, wallConfigs[2]);
+    addWall(scene, gui, wallConfigs[3]);
+    addWall(scene, gui, wallConfigs[4]);
     addFlowerPot(scene, gui);
     addDoor(scene, gui);
 

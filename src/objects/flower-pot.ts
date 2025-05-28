@@ -4,9 +4,7 @@ export const addFlowerPot = (scene, gui) => {
     const loader = new GLTFLoader();
 
     loader.load('/flower-pot.glb', (gltf) => {
-        console.log('Model loaded:', gltf);
         const model = gltf.scene;
-
         model.position.set(0, 0, 0);
         model.scale.set(1, 1, 1);
         model.rotation.set(0, 0, 0);
@@ -42,3 +40,4 @@ export const addFlowerPot = (scene, gui) => {
         console.error('An error occurred while loading the GLTF model:', error);
     });
 }
+
