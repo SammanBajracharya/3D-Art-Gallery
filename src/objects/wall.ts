@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import GUI from 'lil-gui';
 
-import { baseWallHeight } from '@/utils/constants';
+import { baseWallHeight } from '@/utils/configs';
 
 interface Config {
     x: number;
@@ -14,7 +14,7 @@ interface Config {
 
 export function addWall(scene: THREE.Scene, gui: GUI, config: Config) {
     const wallGeometry = new THREE.PlaneGeometry(config.width, baseWallHeight);
-    const wallMaterial = new THREE.MeshLambertMaterial({
+    const wallMaterial = new THREE.MeshStandardMaterial({
         color: new THREE.Color(0xeb9486),
         blending: THREE.NormalBlending,
     });

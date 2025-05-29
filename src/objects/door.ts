@@ -3,16 +3,15 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 import GUI from 'lil-gui';
 
-import { doorPos } from '@/utils/constants';
+import { doorConfig } from '@/utils/configs';
 
 export const addDoor = (scene: THREE.Scene, gui: GUI) => {
     const loader = new GLTFLoader();
 
     loader.load('/door.glb', (gltf) => {
-        console.log('Model loaded:', gltf);
         const model = gltf.scene;
 
-        model.position.set(doorPos.x, doorPos.y, doorPos.z);
+        model.position.set(doorConfig.x, doorConfig.y, doorConfig.z);
         model.scale.set(1, 1, 1);
         model.rotation.set(0, 0, 0);
 

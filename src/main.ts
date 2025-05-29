@@ -12,18 +12,28 @@ import { addDoor } from './objects/door';
 
 import { addWall } from './objects/wall';
 
-import { wallConfigs } from '@/utils/constants';
+import { ceilingConfig, wallConfigs, artworkConfigs, spotlightConfigs } from '@/utils/configs';
+import { addArtFrame } from './objects/art-frame';
+import { addSpotlights } from './objects/spotlights';
 
 function init() {
     const gui = new GUI()
     addLights(scene, gui);
     addFloor(scene);
-    addWall(scene, gui, wallConfigs[1]);
-    addWall(scene, gui, wallConfigs[2]);
-    addWall(scene, gui, wallConfigs[3]);
-    addWall(scene, gui, wallConfigs[4]);
+    for (const config of Object.values(wallConfigs)) {
+        addWall(scene, gui, config);
+    }
+    addFloor(scene, ceilingConfig);
     addFlowerPot(scene, gui);
     addDoor(scene, gui);
+
+    for (const config of artworkConfigs) {
+        addArtFrame(scene, config, gui);
+    }
+
+    for (const config of spotlightConfigs) {
+        addSpotlights(scene, config, gui);
+    }
 
     const axesHelper = new THREE.AxesHelper(5);
     const gridHelper = new THREE.GridHelper(10, 10);
